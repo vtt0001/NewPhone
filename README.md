@@ -14,7 +14,7 @@ Si analizamos el problema planteado en el párrafo anterior podemos llegar a otr
 Por lo tanto y en resumen, trataremos de resolver dos problemas, el primero es un problema de desinformación que trataremos de resolver ayudando a los usuarios a comprar el teléfono que mejor se adapta a sus necesidades. El segundo es un problema de análisis de mercado al cual daremos solución prediciendo cuáles serán las características a mejorar con mayor impacto en función de lo que los usuarios necesitan. 
 
 ---
-##Lógica de Negocio:
+## Lógica de Negocio:
 Manteniendo una lista actualizada de los modelos de teléfonos móviles que hay en el mercado, habrá que calcular el modelo más cercano al modelo "ideal" del usuario mediante el algoritmo de la distancia euclidana entre vectores.
 
 ---
