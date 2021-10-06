@@ -1,6 +1,6 @@
 # NewPhone
 
-Aplicación que recomienda una lista de modelos de teléfonos móviles asignando una puntuación ponderada en función de las necesidades concretas de cada usuario y las características de los modelos.
+Aplicación que recomienda una lista de modelos de teléfonos móviles en función de las necesidades concretas de cada usuario y las características de los modelos.
 
 ---
 ## Planteamiento del problema/problemas a resolver:
@@ -14,7 +14,11 @@ Si analizamos el problema planteado en el párrafo anterior podemos llegar a otr
 Por lo tanto y en resumen, trataremos de resolver dos problemas, el primero es un problema de desinformación que trataremos de resolver ayudando a los usuarios a comprar el teléfono que mejor se adapta a sus necesidades. El segundo es un problema de análisis de mercado al cual daremos solución prediciendo cuáles serán las características a mejorar con mayor impacto en función de lo que los usuarios necesitan. 
 
 ---
-## Documentación complementaria sobre configuración
+##Lógica de Negocio:
+Manteniendo una lista actualizada de los modelos de teléfonos móviles que hay en el mercado, habrá que calcular el modelo más cercano al modelo "ideal" del usuario mediante el algoritmo de la distancia euclidana entre vectores.
+
+---
+## Documentación complementaria sobre configuración:
 
 Pulsa [aquí](https://github.com/vtt0001/NewPhone/blob/main/Doc/Conf.md) para acceder a la documentación asociada a la configuración previa necesaria para comenzar el proyecto 
 
