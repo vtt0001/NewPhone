@@ -1,2 +1,5 @@
-*.class
-*.log
+# Cargo
+/target
+.vscode
+.install
+.cache/
