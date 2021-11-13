@@ -9,9 +9,9 @@ struct Caracteristicas{
     //La velocidad del procesador será expresada en MHz
     vel_procesador: f16,
     //Las dimensiones se expresarán en mm y el orden será siempre altura x anchura x grosor
-    dimensiones: [i32; 3],
+    dimensiones: [f32; 3],
     //El peso se expresará en gramos
-    peso: i32,
+    peso: f32,
     //La capacidad de la batería se indicará en mAh
     capacidad_bateria: u32,
     cinco_g: bool,
@@ -21,4 +21,7 @@ struct Caracteristicas{
     lector_huella: bool,
     dual_sim: bool,
     bluetooth: bool,
+    num_nucleos: u8,
+    //El tamaño de la pantalla se indicará en pulgadas
+    tam_pantalla: u8,
 }
