@@ -7,7 +7,7 @@ struct Caracteristicas{
     rom: u16,
     memoria_interna: u16,
     //La velocidad del procesador será expresada en MHz
-    vel_procesador: u32,
+    vel_procesador: f16,
     //Las dimensiones se expresarán en mm y el orden será siempre altura x anchura x grosor
     dimensiones: [i32; 3],
     //El peso se expresará en gramos
