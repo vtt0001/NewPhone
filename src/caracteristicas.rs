@@ -1,4 +1,4 @@
-struct Caracteristicas{
+pub struct Caracteristicas{
     //las cámaras se expresaran como un entero que contendrá el número de megapixel
     camara_frontal: u16,
     camaras_traseras: Vec<u16>,
@@ -7,7 +7,7 @@ struct Caracteristicas{
     rom: u16,
     memoria_interna: u16,
     //La velocidad del procesador será expresada en MHz
-    vel_procesador: f16,
+    vel_procesador: f32,
     //Las dimensiones se expresarán en mm y el orden será siempre altura x anchura x grosor
     dimensiones: [f32; 3],
     //El peso se expresará en gramos
@@ -23,5 +23,14 @@ struct Caracteristicas{
     bluetooth: bool,
     num_nucleos: u8,
     //El tamaño de la pantalla se indicará en pulgadas
-    tam_pantalla: u8,
+    tam_pantalla: f32,
+}
+
+impl Caracteristicas{
+    pub fn new(new_camara_frontal: u16, new_camaras_traseras: Vec<u16>, new_ram: u16, new_rom: u16, 
+        new_memoria_interna: u16, vel_procesador: f32, new_dimensiones: [f32; 3], new_peso: f32, 
+        new_capacidad_bateria: u32, new_cinco_g: bool, new_nfc: bool, new_infrarrojos: bool, new_gps: bool,
+    new_lector_huella: bool, new_dual_sim: bool, new_bluetooth: bool, new_num_nucleos: u8, new_tam_pantalla: f32,) -> Caracteristicas{
+        panic!();
+    }
 }

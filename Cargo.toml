@@ -5,3 +5,4 @@ edition = "2018"
 
 
 [dependencies]
+galvanic-assert = "0.8.7"
