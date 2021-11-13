@@ -54,7 +54,7 @@ impl Caracteristicas{
         &self.camara_frontal
     }
 
-    pub fn camaras_traseras(&self) -> &Vec<u16> {
+    pub fn get_camaras_traseras(&self) -> &Vec<u16> {
         &self.camaras_traseras
     }
 

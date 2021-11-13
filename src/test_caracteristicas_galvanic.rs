@@ -40,10 +40,23 @@ mod test_caracteristicas_galvanic{
         lector_huella, dual_sim, bluetooth, num_nucleos, tam_pantalla);
 
         assert_that!(&caract, is_variant!(Caracteristicas));
+        assert_that!(&caract.get_camara_frontal(), eq(12));
+        assert_that!(&caract.get_camaras_traseras()[0], eq(108));
+        assert_that!(&caract.get_ram(), eq(8));
+        assert_that!(&caract.get_rom(), eq(128));
+        assert_that!(&caract.get_vel_procesador(), eq(2.84));
+        assert_that!(&caract.get_dimensiones(), eq([74.8, 162.6, 9.0]));
+        assert_that!(&caract.get_peso(), eq(208.5));
+        assert_that!(&caract.get_capacidad_bateria(), eq(4500));
+        assert_that!(&caract.get_cinco_g(), eq(false));
+        assert_that!(&caract.get_nfc(), eq(true));
+        assert_that!(&caract.get_infrarrojos(), eq(true));
+        assert_that!(&caract.get_gps(), eq(true));
+        assert_that!(&caract.get_lector_huella(), eq(false));
+        assert_that!(&caract.get_dual_sim(), eq(false));
+        assert_that!(&caract.get_bluetooth(), eq(true));
+        assert_that!(&caract.get_num_nucleos(), eq(4));
+        assert_that!(&caract.get_tam_pantalla(), eq(6.5));
+        assert_that!(&caract.get_memoria_interna(), eq(128));
     }
-
-    /*#[test]
-    fn expression_should_compute_correct_value() {
-        assert_that!(&3, eq(3));
-    }*/
 }
