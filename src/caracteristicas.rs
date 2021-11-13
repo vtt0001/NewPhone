@@ -49,4 +49,76 @@ impl Caracteristicas{
             tam_pantalla:new_tam_pantalla,
         }
     }
+
+    pub fn get_camara_frontal(&self) -> &u16 {
+        &self.camara_frontal
+    }
+
+    pub fn camaras_traseras(&self) -> &Vec<u16> {
+        &self.camaras_traseras
+    }
+
+    pub fn get_ram(&self) -> &u16 {
+        &self.ram
+    }
+
+    pub fn get_rom(&self) -> &u16 {
+        &self.rom
+    }
+
+    pub fn get_memoria_interna(&self) -> &u16 {
+        &self.memoria_interna
+    }
+
+    pub fn get_vel_procesador(&self) -> &f32 {
+        &self.vel_procesador
+    }
+
+    pub fn get_dimensiones(&self) -> &[f32; 3] {
+        &self.dimensiones
+    }
+
+    pub fn get_peso(&self) -> &f32{
+        &self.peso
+    }
+
+    pub fn get_capacidad_bateria(&self) -> &u32 {
+        &self.capacidad_bateria
+    }
+
+    pub fn get_cinco_g(&self) -> &bool {
+        &self.cinco_g
+    }
+
+    pub fn get_nfc(&self) -> &bool {
+        &self.nfc
+    }
+
+    pub fn get_infrarrojos(&self) -> &bool {
+        &self.infrarrojos
+    }
+
+    pub fn get_gps(&self) -> &bool {
+        &self.gps
+    }
+
+    pub fn get_lector_huella(&self) -> &bool {
+        &self.lector_huella
+    }
+
+    pub fn get_dual_sim(&self) -> &bool {
+        &self.dual_sim
+    }
+
+    pub fn get_bluetooth(&self) -> &bool {
+        &self.bluetooth
+    }
+
+    pub fn get_num_nucleos(&self) -> &u8 {
+        &self.num_nucleos
+    }
+
+    pub fn get_tam_pantalla(&self) -> &f32 {
+        &self.tam_pantalla
+    }
 }
