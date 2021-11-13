@@ -1,10 +1,7 @@
-//TODO Aún por definir
-#[derive(Debug)]
-pub struct Caracteristicas;
+use crate::caracteristicas::Caracteristicas;
 
-#[derive(Debug)]
-pub struct ModeloTel{
-    pub marca: String,
-    pub modelo: String,
-    pub caracteristicas: Caracteristicas,
+struct ModeloTel{
+    marca: String,
+    modelo: String,
+    caracteristicas: Caracteristicas,
 }
