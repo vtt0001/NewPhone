@@ -59,4 +59,47 @@ mod test_caracteristicas_galvanic{
         assert_that!(&caract.get_tam_pantalla(), eq(6.5));
         assert_that!(&caract.get_memoria_interna(), eq(128));
     }
+
+    #[test]
+    fn test_formaliza_discretiza(){
+        let camara_frontal          : u16         = 12;
+        let ram                     : u16         = 8;
+        let rom                     : u16         = 128;
+        let vel_procesador          : f32         = 2.84;
+        let dimensiones             : [f32;3]     =[75.8, 162.4, 9.2];
+        let peso                    : f32         = 208.5;
+        let capacidad_bateria       : u32         = 4500;
+        let cinco_g                 : bool        = false;
+        let nfc                     : bool        = true;
+        let infrarrojos             : bool        = true;
+        let gps                     : bool        = true;
+        let lector_huella           : bool        = false;
+        let dual_sim                : bool        = false;
+        let bluetooth               : bool        = true;
+        let num_nucleos             : u8          = 4;
+        let tam_pantalla            : f32         = 6.5;
+        let memoria_interna         :u16          = 128;   
+        let mut camaras_traseras        : Vec<u16>    = Vec::new();
+        camaras_traseras.push(108);
+        camaras_traseras.push(13);
+        camaras_traseras.push(2);
+        camaras_traseras.push(2);
+
+        let caract: Caracteristicas = Caracteristicas::new(camara_frontal, camaras_traseras, ram, rom, 
+            memoria_interna, vel_procesador, dimensiones, peso, 
+            capacidad_bateria, cinco_g, nfc, infrarrojos, gps,
+        lector_huella, dual_sim, bluetooth, num_nucleos, tam_pantalla);
+
+        let tupla_form_disc: (f32, f32, u8, u8, u8, u8, u8, u8, u8) = caract.discretiza_normaliza();
+        
+        assert_that!(&tupla_form_disc.0, eq(43.75));
+        assert_that!(&tupla_form_disc.1, eq(113251.26));
+        assert_that!(&tupla_form_disc.2, eq(0));
+        assert_that!(&tupla_form_disc.3, eq(1));
+        assert_that!(&tupla_form_disc.4, eq(1));
+        assert_that!(&tupla_form_disc.5, eq(1));
+        assert_that!(&tupla_form_disc.6, eq(0));
+        assert_that!(&tupla_form_disc.7, eq(0));
+        assert_that!(&tupla_form_disc.8, eq(1));
+    }
 }

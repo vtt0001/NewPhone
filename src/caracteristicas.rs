@@ -121,4 +121,39 @@ impl Caracteristicas{
     pub fn get_tam_pantalla(&self) -> &f32 {
         &self.tam_pantalla
     }
+    
+    //Función que devuelve una tupla con los atributos discretizados y formateados
+    pub fn discretiza_normaliza(&self) -> (f32, f32, u8, u8, u8, u8, u8, u8, u8){
+        //Formateando cámaras traseras
+        let mut cont: usize = 0;
+        let mut sum1: f32 = 1.0;
+        let mut sum2: f32 = 0.0;
+
+        while cont < self.camaras_traseras.len(){
+            sum1 += 0.1;
+            sum2 += self.camaras_traseras[cont] as f32;
+            cont+=1;
+        }
+
+        let camaras_traseras: f32 = ((sum2/self.camaras_traseras.len() as f32) * sum1 * 100.0).round() / 100.0;
+
+        //formateando dimensiones
+        //let dimensiones: f32 = f32::trunc(self.dimensiones[0]*self.dimensiones[1]*self.dimensiones[2]  * 100.0) / 100.0;
+        let dimensiones: f32 = (self.dimensiones[0]*self.dimensiones[1]*self.dimensiones[2] * 100.0).round() / 100.0;
+        
+        
+
+        //formateando atributos booleanos:
+        let cinco_g: u8 = if self.cinco_g {1} else {0};
+        let nfc: u8 = if self.nfc {1} else {0};
+        let infrarrojos: u8 = if self.infrarrojos {1} else {0};
+        let gps: u8 = if self.gps {1} else {0};
+        let lector_huella: u8 = if self.lector_huella {1} else {0};
+        let dual_sim: u8 = if self.dual_sim {1} else {0};
+        let bluetooth: u8 = if self.bluetooth {1} else {0};
+
+        (camaras_traseras, dimensiones, cinco_g, nfc, infrarrojos, gps, lector_huella, dual_sim, bluetooth)
+        
+    }
+
 }
