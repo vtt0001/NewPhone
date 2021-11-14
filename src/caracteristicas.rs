@@ -124,7 +124,7 @@ impl Caracteristicas{
         &self.tam_pantalla
     }
     
-    //Función que devuelve una tupla con los atributos discretizados y formateados
+    //Función que devuelve un vector con los atributos discretizados.
     pub fn discretiza(&self) -> Vec<u8>{
         //Formateando cámaras traseras a un solo valor
         let mut cont: usize = 0;
@@ -147,13 +147,7 @@ impl Caracteristicas{
 
         //Discretizamos valores:
         let camara_frontal: u8 = if self.camara_frontal <= 8 {0} else if self.camara_frontal > 8 && self.camara_frontal <= 12 {1} else {2};
-        let camaras_traseras: u8 = if camaras_traseras_in <= 30.0 {
-            0
-        } else if camaras_traseras_in > 30.0 && camaras_traseras_in <= 40.0 {
-            1
-        } else {
-            2
-        };
+        let camaras_traseras: u8 = if camaras_traseras_in <= 30.0 {0} else if camaras_traseras_in > 30.0 && camaras_traseras_in <= 40.0 {1} else {2};
         let ram: u8 = if self.ram <= 4 {0} else if self.ram > 4 && self.ram <= 8 {1} else {2};
         let rom: u8 = if self.rom <= 32 {0} else if self.rom > 32 && self.rom <= 64 {1} else {2};
         let memoria_interna: u8 = if self.memoria_interna <= 256 {0} else if self.memoria_interna > 256 && self.memoria_interna <= 512 {1} else {2};

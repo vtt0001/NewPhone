@@ -1,4 +1,4 @@
-mod test_caracteristicas_galvanic;
+mod test_modelo_tel;
 mod caracteristicas;
 mod modelo_tel;
 
