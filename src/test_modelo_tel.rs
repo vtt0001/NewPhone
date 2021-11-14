@@ -57,9 +57,9 @@ mod test_caracteristicas_galvanic{
         assert_that!(&caract.get_memoria_interna(), eq(128));
     }
 
-     // Test que verifica si el constructor funciona correctamente (HU1, #18)
+     // Test que verifica si calcula de forma correcta los valores discretizados (HU1, #20)
     #[test]
-    fn test_formaliza_discretiza(){
+    fn test_discretiza_formatea_funcionalidad(){
         let camara_frontal          : u16         = 12;
         let ram                     : u16         = 8;
         let rom                     : u16         = 128;
@@ -88,17 +88,16 @@ mod test_caracteristicas_galvanic{
             capacidad_bateria, cinco_g, nfc, infrarrojos, gps,
         lector_huella, dual_sim, bluetooth, num_nucleos, tam_pantalla);
 
-        let tupla_form_disc: (f32, f32, u8, u8, u8, u8, u8, u8, u8) = caract.discretiza_normaliza();
+        let mut vec_disc: Vec<u8>= caract.discretiza();
         
-        assert_that!(&tupla_form_disc.0, eq(43.75));
-        assert_that!(&tupla_form_disc.1, eq(113251.26));
-        assert_that!(&tupla_form_disc.2, eq(0));
-        assert_that!(&tupla_form_disc.3, eq(1));
-        assert_that!(&tupla_form_disc.4, eq(1));
-        assert_that!(&tupla_form_disc.5, eq(1));
-        assert_that!(&tupla_form_disc.6, eq(0));
-        assert_that!(&tupla_form_disc.7, eq(0));
-        assert_that!(&tupla_form_disc.8, eq(1));
+        let esperados: Vec<u8> = vec![1,2,1,2,0,2,2,1,1,0,1,1,1,0,0,1,1,2];
+        let mut count: usize = 0;
+        
+        while count < 18 {
+            let x = vec_disc[count];
+            assert_that!(&vec_disc[count], eq(esperados[count]));
+            count += 1;
+        }
     }
 }
 

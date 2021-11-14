@@ -1,3 +1,5 @@
+use std::num;
+
 pub struct Caracteristicas{
     //las cámaras se expresaran como un entero que contendrá el número de megapixel
     camara_frontal: u16,
@@ -123,8 +125,8 @@ impl Caracteristicas{
     }
     
     //Función que devuelve una tupla con los atributos discretizados y formateados
-    pub fn discretiza_normaliza(&self) -> (f32, f32, u8, u8, u8, u8, u8, u8, u8){
-        //Formateando cámaras traseras
+    pub fn discretiza(&self) -> Vec<u8>{
+        //Formateando cámaras traseras a un solo valor
         let mut cont: usize = 0;
         let mut sum1: f32 = 1.0;
         let mut sum2: f32 = 0.0;
@@ -135,15 +137,30 @@ impl Caracteristicas{
             cont+=1;
         }
 
-        let camaras_traseras: f32 = ((sum2/self.camaras_traseras.len() as f32) * sum1 * 100.0).round() / 100.0;
+        //
+        let camaras_traseras_in: f32 = ((sum2/self.camaras_traseras.len() as f32) * sum1 * 100.0).round() / 100.0;
 
         //formateando dimensiones
-        //let dimensiones: f32 = f32::trunc(self.dimensiones[0]*self.dimensiones[1]*self.dimensiones[2]  * 100.0) / 100.0;
-        let dimensiones: f32 = (self.dimensiones[0]*self.dimensiones[1]*self.dimensiones[2] * 100.0).round() / 100.0;
+        let dimensiones_in: f32 = ((self.dimensiones[0]*self.dimensiones[1]*self.dimensiones[2]/1000.0) * 100.0).round() / 100.0;
         
         
 
-        //formateando atributos booleanos:
+        //Discretizamos valores:
+        let camara_frontal: u8 = if self.camara_frontal <= 8 {0} else if self.camara_frontal > 8 && self.camara_frontal <= 12 {1} else {2};
+        let camaras_traseras: u8 = if camaras_traseras_in <= 30.0 {
+            0
+        } else if camaras_traseras_in > 30.0 && camaras_traseras_in <= 40.0 {
+            1
+        } else {
+            2
+        };
+        let ram: u8 = if self.ram <= 4 {0} else if self.ram > 4 && self.ram <= 8 {1} else {2};
+        let rom: u8 = if self.rom <= 32 {0} else if self.rom > 32 && self.rom <= 64 {1} else {2};
+        let memoria_interna: u8 = if self.memoria_interna <= 256 {0} else if self.memoria_interna > 256 && self.memoria_interna <= 512 {1} else {2};
+        let vel_procesador: u8 = if self.vel_procesador <= 1.2 {0} else if self.vel_procesador > 1.2 && self.vel_procesador <= 2.4 {1} else {2};
+        let dimensiones: u8 = if dimensiones_in <= 85.0 {0} else if dimensiones_in > 85.0 && dimensiones_in <= 100.0 {1} else {2};
+        let peso: u8 = if self.peso <= 180.0 {0} else if self.peso > 180.0 && self.peso <= 250.0 {1} else {2};
+        let capacidad_bateria: u8 = if self.capacidad_bateria <= 3000 {0} else if self.capacidad_bateria > 3000 && self.capacidad_bateria <= 4500 {1} else {2};
         let cinco_g: u8 = if self.cinco_g {1} else {0};
         let nfc: u8 = if self.nfc {1} else {0};
         let infrarrojos: u8 = if self.infrarrojos {1} else {0};
@@ -151,9 +168,13 @@ impl Caracteristicas{
         let lector_huella: u8 = if self.lector_huella {1} else {0};
         let dual_sim: u8 = if self.dual_sim {1} else {0};
         let bluetooth: u8 = if self.bluetooth {1} else {0};
+        let num_nucleos: u8 = if self.num_nucleos <= 2 {0} else if self.num_nucleos > 2 && self.num_nucleos <= 6 {1} else {2};
+        let tam_pantalla: u8 = if self.tam_pantalla <= 5.0 {0} else if self.tam_pantalla > 5.0 && self.tam_pantalla <= 5.5 {1} else {2};
 
-        (camaras_traseras, dimensiones, cinco_g, nfc, infrarrojos, gps, lector_huella, dual_sim, bluetooth)
+        let mut vector: Vec<u8> = vec![camara_frontal, camaras_traseras, ram, 
+        rom, memoria_interna, vel_procesador, dimensiones, peso, capacidad_bateria, cinco_g, nfc, infrarrojos, gps, lector_huella, dual_sim, bluetooth,
+        num_nucleos, tam_pantalla];
         
+        vector
     }
-
 }
