@@ -1,0 +1,34 @@
+[tasks.clean]
+descripction = "Limpiar el proyecto"
+command = "cargo"
+args = ["clean"]
+
+[tasks.check]
+description = "Chequear de sintaxis"
+command = "cargo"
+args = ["check"]
+
+[tasks.test]
+description = "Ejecución de los test (todos)"
+command = "cargo"
+args = ["test"]
+
+[tasks.test_caracteristicas]
+description = "Ejecución de los test relacionados con caracteristicas.rs"
+command = "cargo"
+args = ["test", "test_caracteristicas_galvanic"]
+
+[tasks.test_modelo_tel]
+description = "Ejecución de los test relacionados con modelo_tel.rs"
+command = "cargo"
+args = ["test", "test_modelo_tel_galvanic"]
+
+[tasks.buil]
+description = "Construcción de la aplicación"
+command = "cargo"
+args = ["run"]
+
+[tasks.run]
+description = "Ejecución de la aplicación"
+command = "cargo"
+args = ["run"]
