@@ -1,3 +1,4 @@
+---
 entidad:
   -src/modelo_tel.rs
   -src/caracteristicas.rs
