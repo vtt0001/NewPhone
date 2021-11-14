@@ -1,9 +1,6 @@
 
 mod test_caracteristicas_galvanic{
 
-    //#[macro_use]
-    //extern crate galvanic_assert;
-    //use galvanic_assert::matchers::*;
     use galvanic_assert::*;
     use galvanic_assert::matchers::*;
     use crate::caracteristicas::Caracteristicas;
@@ -60,6 +57,7 @@ mod test_caracteristicas_galvanic{
         assert_that!(&caract.get_memoria_interna(), eq(128));
     }
 
+     // Test que verifica si el constructor funciona correctamente (HU1, #18)
     #[test]
     fn test_formaliza_discretiza(){
         let camara_frontal          : u16         = 12;
@@ -103,3 +101,52 @@ mod test_caracteristicas_galvanic{
         assert_that!(&tupla_form_disc.8, eq(1));
     }
 }
+
+mod test_modelo_tel_galvanic{
+
+    use galvanic_assert::*;
+    use galvanic_assert::matchers::*;
+    use crate::caracteristicas::Caracteristicas;
+    use crate::modelo_tel::ModeloTel;
+
+    // Test que verifica si el constructor funciona correctamente (HU1, #19)
+    #[test]
+    fn test_nuevo_modelotel(){
+        let camara_frontal          : u16         = 12;
+        let ram                     : u16         = 8;
+        let rom                     : u16         = 128;
+        let vel_procesador          : f32         = 2.84;
+        let dimensiones             : [f32;3]     =[74.8, 162.6, 9.0];
+        let peso                    : f32         = 208.5;
+        let capacidad_bateria       : u32         = 4500;
+        let cinco_g                 : bool        = false;
+        let nfc                     : bool        = true;
+        let infrarrojos             : bool        = true;
+        let gps                     : bool        = true;
+        let lector_huella           : bool        = false;
+        let dual_sim                : bool        = false;
+        let bluetooth               : bool        = true;
+        let num_nucleos             : u8          = 4;
+        let tam_pantalla            : f32         = 6.5;
+        let memoria_interna         :u16          = 128;   
+        let mut camaras_traseras        : Vec<u16>    = Vec::new();
+        camaras_traseras.push(108);
+        camaras_traseras.push(13);
+        camaras_traseras.push(2);
+        camaras_traseras.push(2);
+
+        let caract: Caracteristicas = Caracteristicas::new(camara_frontal, camaras_traseras, ram, rom, 
+            memoria_interna, vel_procesador, dimensiones, peso, 
+            capacidad_bateria, cinco_g, nfc, infrarrojos, gps,
+        lector_huella, dual_sim, bluetooth, num_nucleos, tam_pantalla);
+
+        let marca: String = "Samsung".to_string();
+        let modelo: String = "Galaxy Note 10".to_string();
+        let movil: ModeloTel = ModeloTel::new(marca, modelo, caract);
+
+        assert_that!(&movil, is_variant!(ModeloTel));
+        assert_that!(&movil.get_marca(), eq("Samsung".to_string()));
+        assert_that!(&movil.get_modelo(), eq("Galaxy Note 10".to_string()));
+    }
+}
+
