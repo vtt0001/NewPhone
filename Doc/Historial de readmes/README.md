@@ -1,26 +1,41 @@
-# NewPhone
+
+
+# NewPhone. 
+
+#### Estado: En fase de planificación
 
 Aplicación que recomienda una lista de modelos de teléfonos móviles en función de las necesidades concretas de cada usuario y las características de los modelos.
 
 ---
-## Planteamiento del problema/problemas a resolver:
+## Herramientas:
 
-A día de hoy y debido a la rápida evolución de la tecnología, las personas cambiamos de teléfono móvil constantemente. 
+### Gestor de tareas: 
 
-En la mayoría de los casos, cuando se trata de comprar un nuevo teléfono móvil, nos dejamos llevar por la publicidad, lo que personas conocidas nos dicen de este o aquel modelo o incluso nos fijamos únicamente en la estética. ¿Estamos comprando un dispositivo con las características que mejor se adaptan a nuestras necesidades? La respuesta a esta pregunta será en la inmensa mayoría de los casos no. Tendemos a comprar modelos con unas características muy superiores a nuestras necesidades lo que conlleva un gasto innecesario.
+Como gestor de tareas se ha escogido ***cargo make***, la documentación asociada se encuentra en el siguiente [documento](https://github.com/vtt0001/NewPhone/blob/main/Doc/Herramientas/Gestor%20de%20tareas.md)
 
-Si analizamos el problema planteado en el párrafo anterior podemos llegar a otra pregunta. ¿Los fabricantes de teléfonos móviles están caminando en la dirección correcta? Todo mercado debe adaptarse a las necesidades reales de sus clientes creando productos útiles y cuyos recursos sean aprovechados por los usuarios en la mayor medida. Esto nos lleva a una cuestión inherente a la primera que es si las empresas del sector tienen suficientemente en cuenta lo que los usuarios esperan del dispositivo que van a comprar e incluso predecir que posibles mejoras futuras tendrán mayor impacto en su nicho de mercado.
+### Biblioteca de aserciones:
 
-Por lo tanto y en resumen, trataremos de resolver dos problemas, el primero es un problema de desinformación que trataremos de resolver ayudando a los usuarios a comprar el teléfono que mejor se adapta a sus necesidades. El segundo es un problema de análisis de mercado al cual daremos solución prediciendo cuáles serán las características a mejorar con mayor impacto en función de lo que los usuarios necesitan. 
+Como biblioteca de aserciones se ha escogido ***galvanic***, la documentación asociada se encuentra en el siguiente [documento](https://github.com/vtt0001/NewPhone/blob/main/Doc/Herramientas/Biblioteca%20de%20aserciones.md)
+
+### Marco de pruebas:
+
+Como marco de pruebas se ha escogido ***cargo test***, la documentación asociada se encuentra en el siguiente [documento](https://github.com/vtt0001/NewPhone/blob/main/Doc/Herramientas/Marco%20de%20pruebas.md)
 
 ---
-## Lógica de Negocio:
-Manteniendo una lista actualizada de los modelos de teléfonos móviles que hay en el mercado, habrá que calcular el modelo más cercano al modelo "ideal" del usuario mediante el algoritmo de la distancia euclidana entre vectores.
+## Información adicional:
 
----
-## Documentación complementaria sobre configuración:
+**Nota 1**: Se ha actualizado el archivo [cc.yaml](https://github.com/vtt0001/NewPhone/blob/Hito_1/cc.yaml) incluyendo más entidades, lenguaje, test y fichero de tareas [issue #23](https://github.com/vtt0001/NewPhone/issues/8).
 
-Pulsa [aquí](https://github.com/vtt0001/NewPhone/blob/main/Doc/Conf.md) para acceder a la documentación asociada a la configuración previa necesaria para comenzar el proyecto 
+**Nota 2**: Se ha decido hacer uso de TDD, el [issue #17](https://github.com/vtt0001/NewPhone/issues/17) tiene un ejemplo más detallado del proceso red/green/refactor. Se ha detallado más este proceso para que sirva de ejemplo, en el resto de issues que implican TDD no se especifican tantos pasos.
+
+**Nota 3**: Como sabemos, este documento es un reflejo del estado actual del proyecto, es por esto que se tomo la decisión de crear un directorio dentro de la carpeta de documentación para poder almacenar un histórico de los README por los que va pasando el proyecto, se pueden ver las diferentes versiones de README pulsando [aquí](https://github.com/vtt0001/NewPhone/tree/Hito_1/Doc/Historial%20de%20readmes).
+
+**Nota 4**: Se ha creado [Makefile.toml](https://github.com/vtt0001/NewPhone/blob/main/Makefile.toml) para automatizar ciertas tareas.
+
+
+
+
+
 
 
 
