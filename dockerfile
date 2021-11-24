@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-LABEL mantainer= "Victor Torres <vtt0001@correo.ugr.es>"
+LABEL mantainer="Victor Torres <vtt0001@correo.ugr.es>"
 
 ENV RUSTUP_HOME=/opt/rust CARGO_HOME=/opt/cargo PATH=/opt/cargo/bin:$PATH 
 ENV PKG_CONFIG_PATH=/dlib-install/usr/local/lib64/pkgconfig/
