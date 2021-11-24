@@ -34,4 +34,5 @@ command = "cargo"
 args = ["run"]
 
 [tasks.docker_run]
+description = "Ejecución del contenedor que lanza los test de la aplicación"
 script = "sudo docker run -t -v \"$(pwd)\":/app/test vtt0001/newphone"
