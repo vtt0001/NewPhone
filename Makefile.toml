@@ -32,3 +32,6 @@ args = ["build"]
 description = "Ejecución de la aplicación"
 command = "cargo"
 args = ["run"]
+
+[tasks.docker_run]
+script = "sudo docker run -t -v \"$(pwd)\":/app/test vtt0001/newphone"
