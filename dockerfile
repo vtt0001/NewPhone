@@ -11,7 +11,7 @@ COPY ./Cargo.toml .
 RUN apk update \
     && apk upgrade \
     && mkdir src && touch src/main.rs\
-    && mkdir target && touch target/.cargo-lock\
+    && mkdir -p target/debug && touch target/debug/.cargo-lock\
     && mkdir -p /app/test\
     && for i in openssl-dev gcc musl-dev rust cargo; do apk add "$i"; done\
     && cargo install --force cargo-make\
