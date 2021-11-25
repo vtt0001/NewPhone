@@ -1,5 +1,4 @@
 # Cargo
-/target
 .vscode
 .install
 .cache/
