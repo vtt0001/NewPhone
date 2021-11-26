@@ -3,4 +3,4 @@
 .install
 .cache/
 Cargo.lock
-.target/
+/target
