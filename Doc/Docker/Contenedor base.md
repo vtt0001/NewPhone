@@ -78,6 +78,25 @@ La imagen rust 1.56-alpine3.14 tiene su último commit hace 21 horas, lo que nos
 
 En cuanto a las variables de entorno, esta versión reducida del contenedor rust contiene exactamente las mismas que la opción anterior.
 
+##Pruebas realizadas
+
+Aclarar que solo se han realizado pruebas de las versiones oficiales, en este caso, rust y alpine ya que es una buena práctica hacer uso de las versiones oficiales del lenguaje o de contenedores muy reducidos como en el caso de alpine.
+
+### Contenedor base alpine:
+
+![Dockerfile](https://github.com/vtt0001/NewPhone/blob/main/Img/Dockerfile.png)
+
+En el [issue 27](https://github.com/vtt0001/NewPhone/issues/27) podemos ver la evolución que ha seguido la tarea de generar mi dockerfile con alpine como base.
+
+Vimos la necesidad de poder descargar e instalar las dependencias como usuario sin privilegios de superusuario, para ello, hicimos uso de la herramienta cargo-chef. Esta herramienta se encarga de encapsular todo lo necesario para la construcción y almacenarlo en caché, de esta forma, el usuario no root podrá ejecutar los test de nuestra aplicación sin problemas. Esta tarea está descrita en el [issue #30](https://github.com/vtt0001/NewPhone/issues/30).
+
+Aclaración: Nuestro dockerfile crea y destruye un main vacío para permitir a cargo-chef hacer la encapsulación. Además, cabe destacar que hay malas prácticas incluidas en la prueba ya que fue la primera opción que decidimos probar y los conceptos aún no estaban bien asimilados.
+
+### Contenedor base rust:
+
+![Dockerfile_rust](https://github.com/vtt0001/NewPhone/blob/main/Img/Dockerfile_rust.png)
+
+Como se puede observar esta imagen queda más limpia, el nivel de dificultad se reduce bastante y en general, parece compensar la limpieza y la facilidad a la hora de aplicar buenas prácticas fente al pequeño tamaño que incrementa con respecto al contenedor con base alpine.
 
 
 ## Tabla comparativa
@@ -88,13 +107,10 @@ En cuanto a las variables de entorno, esta versión reducida del contenedor rust
 | En catual mantenimiento|Si|Si|Si|Si|
 | Variables de entorno|PATH|PATH|PATH<br/>RUSTUP_HOME<br/>CARGO_HOME<br/>RUST_VERSION|PATH<br/>RUSTUP_HOME<br/>CARGO_HOME<br/>RUST_VERSION|
 | Intérprete de comandos|bash|bin/sh|bash|bash|
-
+| Nivel de dificultad|-|Alto|Medio|-|
 
 
 ##Conclusiones y elección:
 
-Las dos versiones de rust que estamos contemplando quedan directamente descartadas por el peso de las mismas. Teniendo en cuenta que nuestro objetivo es generar un entorno de pruebas simple para nuestro proyecto, los pesos de ambos contenedores son demasiado grandes para ser elegidos como contenedor base. Buscamos un contenedor muy ligero y estos dos ejemplos no son el caso.
+Teniendo en cuenta las pruebas realizadas y siendo el mayor punto de inflexión la facilidad con la que se puede montar el contenedor, la elección final para nuestro contenedor base será **rust:latest**. Asumimos usar un contenedor con algo más de peso ya que es imprescindible buscar un equlibrio entre tamaño y eficiencia a la hora de desarrollar.
 
-Nos quedan ahora dos opciones, teniendo en cuenta que ambas opciones son válidas (ubuntu y alpine) y que alpine es una versión reducida de ubuntu, será la variable tamaño la que nos haga decantarnos por alpine como opción elegida para ser el contenedor base. Hay que tener en cuenta que en el contenedor ubuntu podemos encontrar un gran número de programas que no vamos a utilizar, por lo tanto, es espacio innecesario que aumentaría los costes de infraestructura de forma innecesaria.
-
-Elección: **alpine latest**
