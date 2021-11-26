@@ -80,7 +80,7 @@ En cuanto a las variables de entorno, esta versión reducida del contenedor rust
 
 ##Pruebas realizadas
 
-Aclarar que solo se han realizado pruebas de las versiones oficiales, en este caso, rust y alpine ya que es una buena práctica hacer uso de las versiones oficiales del lenguaje o de contenedores muy reducidos como en el caso de alpine.
+Aclarar que solo se han realizado pruebas de las versiones oficiales, en este caso, rust y alpine, ya que, es una buena práctica hacer uso de las versiones oficiales del lenguaje o de contenedores muy reducidos como en el caso de alpine.
 
 ### Contenedor base alpine:
 
@@ -90,13 +90,13 @@ En el [issue 27](https://github.com/vtt0001/NewPhone/issues/27) podemos ver la e
 
 Vimos la necesidad de poder descargar e instalar las dependencias como usuario sin privilegios de superusuario, para ello, hicimos uso de la herramienta cargo-chef. Esta herramienta se encarga de encapsular todo lo necesario para la construcción y almacenarlo en caché, de esta forma, el usuario no root podrá ejecutar los test de nuestra aplicación sin problemas. Esta tarea está descrita en el [issue #30](https://github.com/vtt0001/NewPhone/issues/30).
 
-Aclaración: Nuestro dockerfile crea y destruye un main vacío para permitir a cargo-chef hacer la encapsulación. Además, cabe destacar que hay malas prácticas incluidas en la prueba ya que fue la primera opción que decidimos probar y los conceptos aún no estaban bien asimilados.
+Aclaración: Nuestro dockerfile crea y destruye un main vacío para permitir a cargo-chef hacer la encapsulación. Además, cabe destacar que hay malas prácticas incluidas en la prueba, ya que, fue la primera opción que decidimos probar y los conceptos aún no estaban bien asimilados.
 
 ### Contenedor base rust:
 
 ![Dockerfile_rust](https://github.com/vtt0001/NewPhone/blob/main/Img/Dockerfile_rust.png)
 
-Como se puede observar esta imagen queda más limpia, el nivel de dificultad se reduce bastante y en general, parece compensar la limpieza y la facilidad a la hora de aplicar buenas prácticas fente al pequeño tamaño que incrementa con respecto al contenedor con base alpine.
+Como se puede observar esta imagen queda más limpia, el nivel de dificultad se reduce bastante y en general, parece compensar la limpieza y la facilidad a la hora de aplicar buenas prácticas frente al pequeño tamaño que incrementa con respecto al contenedor con base alpine.
 
 
 ## Tabla comparativa
@@ -110,7 +110,7 @@ Como se puede observar esta imagen queda más limpia, el nivel de dificultad se 
 | Nivel de dificultad|-|Alto|Medio|-|
 
 
-##Conclusiones y elección:
+## Conclusiones y elección:
 
-Teniendo en cuenta las pruebas realizadas y siendo el mayor punto de inflexión la facilidad con la que se puede montar el contenedor, la elección final para nuestro contenedor base será **rust:latest**. Asumimos usar un contenedor con algo más de peso ya que es imprescindible buscar un equlibrio entre tamaño y eficiencia a la hora de desarrollar.
+Teniendo en cuenta las pruebas realizadas y siendo el mayor punto de inflexión la facilidad con la que se puede montar el contenedor, la elección final para nuestro contenedor base será **rust:latest**. Asumimos usar un contenedor con algo más de peso ya que es imprescindible buscar un equilibrio entre tamaño y eficiencia a la hora de desarrollar.
 
