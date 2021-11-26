@@ -11,22 +11,12 @@ En el [issue 26](https://github.com/vtt0001/NewPhone/issues/26) podemos ver la e
 
 ## Dockerfile:
 
-En el [issue 27](https://github.com/vtt0001/NewPhone/issues/27) podemos ver la evolución que ha seguido la tarea de generar mi dockerfile.
-
 Tras leer sobre buenas prácticas en dockerfiles, se detectó la necesidad de reducir el contexto de construcción para minimizar el tamaño de la imagen, es por esto que se creó el [documento .dockerignore](https://github.com/vtt0001/NewPhone/blob/main/.dockerignore), el issue de esta tarea es [#28](https://github.com/vtt0001/NewPhone/issues/28).
 
-Una vez hecho esto vimos la necesidad de poder descargar e instalar las dependencias como usuario sin privilegios de superusuario, para ello, hicimos uso de la herramienta cargo-chef. Esta herramienta se encarga de encapsular todo lo necesario para la construcción y almacenarlo en caché, de esta forma, el usuario no root podrá ejecutar los test de nuestra aplicación sin problemas. Esta tarea está descrita en el [issue #30](https://github.com/vtt0001/NewPhone/issues/30).
-
-Aclaración: Nuestro dockerfile crea y destruye un main vacío para permitir a cargo-chef hacer la encapsulación.
-
-Para ver el aspecto final de nuestro dockerfile pulsar [aquí](https://github.com/vtt0001/NewPhone/blob/main/dockerfile)
-
 ### Comentando el código:
-![Dockerfile código](https://github.com/vtt0001/NewPhone/blob/main/Img/Dockerfile.png)
+![Dockerfile código](https://github.com/vtt0001/NewPhone/blob/main/Img/Dockerfile_rust.png)
 
-En primer lugar, usamos la imagen base alpine en su versión 3.14 e incluimos LABEL's con información sobre quien mantiene el código y la url del repositorio. Lo siguiente que hacemos es declarar algunas variables de entorno necesarias para instalar rust y cargo, nos colocamos en nuestro directorio /app/test del contenedor e indicamos root como usuario para proceder a instalar aquello que sea necesario. Las dos primeras órdenes COPY incluyen en el directorio los dos archivos cargo necesarios para que cargo chef pueda preparar y encapsular las dependencias, el último COPY guardará en el mismo directorio Makefile.toml para poder lanzar los test desde nuestro task manager.
-
-Pasamos ahora a la instrucción RUN. Lo primero que haremos será actualizar, una vez hecho, creamos un directorio src con un archivo main vacío, esto, como ya se ha explicado antes, es un paso necesario para el correcto funcionamiento de cargo chef (será eliminado después). Ahora sí, instalamos todo aquello que necesitamos para poder correr los test de rust en alpine. Por último borramos el main.rs vacío y creamos un usuario sin permisos root, este será el encargado de hacer uso de makers test para ejecutar los test de nuestra aplicación.
+En primer lugar, usamos la imagen base rust en su última versión e incluimos LABEL's con información sobre quien mantiene el código y la url del repositorio. Lo siguiente que hacemos es copiar Cargo.toml al contenedor para poder usar las dependencias. Creamos nuestro directorio app/test y creamos un main vacío que sirve para que rust deje compilar y posteriormente lanzar los test, incluimos un usuario noroot (aclarar que este paso no sería necesario, esta línea se ha mantenido así porque se pretende intentar lanzar el contenedor con dicho usuario en un futuro, para entender de lo que hablamos, ir al final de este documento, nota 2). Borramos Cargo.toml, cambiamos de directorio y ejecutamos los test. Como se puede observar no se hace uso del task manager, esta decisión queda justificada en la nota 3.
 
 
 ## Docker Hub y actualización automática:
@@ -73,6 +63,10 @@ Tras realizar todo esto se nos creará un paquete en el repositorio. Para ver el
 ## Notas y aclaraciones
 
 -**Nota 1:** En el [issue #34] se puede ver que se ha incluido una nueva tarea en el documento [Makefile.toml](https://github.com/vtt0001/NewPhone/blob/main/Makefile.toml) para ejecutar el contenedor (task.docker_run)tal y como lo hará el profesor al corregir.
+
+-**Nota 2:** Hablando con varios compañeros y con el propio profesor de la asignatura, llegamos a la conclusión de que la ejecución de test en rust con un usuario no root se puede llegar a hacer muy engorrosa, incluso haciendo uso de herramientas específicas como cargo-chef, que además, incrementan el tamaño del contenedor de una forma considerable. Es por esto que se tomó la decisión premeditada de no hacer el cambio de usuario a uno noroot. La decisión de dejar la creación del usuario viene impulsada por la perspectiva de seguir trabajando en la posibilidad de ejecutar como usuario no root.
+
+-**Nota 3:** Se ha tomado la decisión de no usar el task manager para la ejecución de los test en el contenedor por dos motivos. El primero y más importante es que el contenedor base de rust tiene ya un peso bastante elevado como para instalar además cargo-make. Por otro lado, la tarea que debe ejecutar es muy simple, solo ejecuta <code> cargo test </code> y sería un error instalar cargo-make con el incremento de peso que conlleva para lanzar esa instrucción simple.
 
 
 
