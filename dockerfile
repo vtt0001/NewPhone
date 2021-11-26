@@ -6,6 +6,7 @@ LABEL vtt0001.NewPhone.url="https://github.com/vtt0001/NewPhone>"
 COPY ./Cargo.toml .
 
 RUN mkdir -p /app/test\
+    && mkdir -p /target/debug && touch target/debug/.cargo-lock\
     && mkdir src && touch src/main.rs\
     && apt-get update && apt-get upgrade -y \
     && useradd -ms /bin/bash noroot \
