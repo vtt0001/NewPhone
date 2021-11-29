@@ -1,0 +1,16 @@
+sudo: false
+
+language: rust
+
+cache: cargo
+
+branches 
+  only:
+  - master
+
+rust:
+  -"1.55.0"
+  -"1.56.0"
+
+script:
+  cargo test
