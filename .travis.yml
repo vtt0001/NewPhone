@@ -12,5 +12,8 @@ rust:
   - "1.55.0"
   - "1.56.0"
 
+install:
+  - cargo install --force cargo-make
+
 script:
-  cargo test
+  makers test
