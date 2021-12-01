@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: vtt0001/newphone:latest
+    steps:
+      - checkout
+      - run: cargo test
+
+workflows:
+    test_proyecto:
+        jobs:
+            - test
