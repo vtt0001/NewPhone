@@ -33,7 +33,7 @@ Para ver la documentación asociada a CircleCi, pulsar [aquí](https://github.co
 
 ## Notas y aclaraciones
 
--**Nota 1:** En el [commit 5f3c0a5](https://github.com/vtt0001/NewPhone/commit/5f3c0a5d247675cc33a30fb34531cf0c116995df), se puede ver que se han aplicado ciertas mejoras al contenedor de nuestros test eliminando instrucciones innecesarias. Aclarar que también se ha desistido de la idea de ejecutar como root los test dentro del contenedor por los motivos que se indicaron en el hito anterior.
+-**Nota 1:** En el [commit 5f3c0a5](https://github.com/vtt0001/NewPhone/commit/5f3c0a5d247675cc33a30fb34531cf0c116995df), se puede ver que se han aplicado ciertas mejoras al contenedor de nuestros test eliminando instrucciones innecesarias. Aclarar que también se ha desistido de la idea de ejecutar como root los test dentro del contenedor por los motivos que se indicaron en el hito anterior. Véase [README_3.md](https://github.com/vtt0001/NewPhone/blob/main/Doc/Historial%20de%20readmes/README_3.md)
 
 -**Nota 2:** En el [issue #46] Se puede observar que en la versión inicial de nuestro .travis.yml se estaba usando una instrucción deprecada, instrucción que además era redundante ya que estábamos asignando el valor que tiene por omisión. Es por este motivo que se eliminó del archivo.
 
