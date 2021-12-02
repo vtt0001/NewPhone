@@ -10,7 +10,7 @@ Para poder hacer uso de CircleCI como sistema de integración continua en nuestr
 
 ![Archivo](https://github.com/vtt0001/NewPhone/blob/main/Img/Archivo%20CircleCi.png)
 
-Lo primero que haremmos será indicar la versión de CircleCi más actual y estable. En este caso, 2.1.
+Lo primero que haremos será indicar la versión de CircleCi más actual y estable. En este caso, 2.1.
 
 Ahora vamos a hacer uso de nuestro contenedor para la ejecución de los test de nuestro código. Para ello indicamos la imagen de docker correspondiente.
 
